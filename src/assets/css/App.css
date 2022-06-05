@@ -9,39 +9,23 @@
 }
 .Front-End-Test---Home-view {
   width: 100%;
-  height: 100vh;
+  min-height: 100vh;
   padding: 0 0 98px;
   background-color: #fcfcfc;
 }
-.Rectangle {
-  width: 98px;
-  height: 31px;
-  padding: 3px 39px 0 40px;
-  border-radius: 2px;
-  border: solid 1px #1797ff;
+.rectangles{
+  width: 100%;
+  display: flex;
+  justify-content: center;
 }
-.All {
-  width: 19px;
-  height: 28px;
-  font-family: 'Roboto', sans-serif;
-  font-size: 16px;
-  font-weight: 500;
-  font-stretch: normal;
-  font-style: normal;
-  line-height: 1.75;
-  letter-spacing: normal;
-  text-align: center;
-  color: #1797ff;
-}
-.Rectangle2 {
-  width: 98px;
+.rectangle{
   height: 31px;
-  padding: 3px 16px 0 17px;
   border-radius: 2px;
+  padding: 3px 20px;
+  cursor: pointer;
   border: solid 1px #d6d6d6;
 }
-.My-faves {
-  width: 65px;
+.rectangle span{
   height: 28px;
   font-family: 'Roboto', sans-serif;
   font-size: 16px;
@@ -52,4 +36,51 @@
   letter-spacing: normal;
   text-align: center;
   color: #606060;
+}
+.rectangleActive {border: solid 1px #1797ff;}
+.rectangleActive span {color: #1797ff !important;}
+
+.dropDownContainer{
+  padding: 44px 150px;
+}
+.dropDown {
+  width: 240px;
+  border-radius: 4px;
+  border: solid 1px #2e2e2e;
+  background-color: #fff;
+  color: #2e2e2e;
+  text-align: left;
+}
+.dropdown-toggle::after{
+  position: relative;
+  left: 40%;
+  top: 2px;
+}
+.dropdown-menu{
+  width: 240px;
+}
+.dropItem{
+  display: flex;
+}
+.dropImg{
+  background-size: cover;
+  background-repeat: no-repeat;
+}
+.dropImgAngular{
+  background-image: url('../img/angularimg.png');
+  width: 25px;
+  height: 27px;
+  margin-right: 10px;
+}
+.dropImgReact{
+  background-image: url('../img/reactimg.png');
+  width: 25px;
+  height: 22px;
+  margin-right: 10px;
+}
+.dropImgvue{
+  background-image: url('../img/vueimg.png');
+  width: 25px;
+  height: 22px;
+  margin-right: 10px;
 }

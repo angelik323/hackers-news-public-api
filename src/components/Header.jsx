@@ -4,7 +4,7 @@ const Header = () => {
   let html= (
     <>
       <div className='header'>
-        <span class="HACKER-NEWS">
+        <span className="HACKER-NEWS">
           HACKER NEWS
         </span>
       </div>
