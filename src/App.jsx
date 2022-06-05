@@ -1,13 +1,13 @@
-import logo from './logo.svg';
-import './App.css';
+import logo from './assets/img/logo.svg'
+import './assets/css/App.css'
 
 function App() {
-  return (
+  let html = (
     <div className="App">
       <header className="App-header">
         <img src={logo} className="App-logo" alt="logo" />
         <p>
-          Edit <code>src/App.js</code> and save to reload.
+          Edit <code>src/App.js</code> Para Angelita.
         </p>
         <a
           className="App-link"
@@ -19,7 +19,9 @@ function App() {
         </a>
       </header>
     </div>
-  );
+  )
+
+  return html
 }
 
-export default App;
+export default App
