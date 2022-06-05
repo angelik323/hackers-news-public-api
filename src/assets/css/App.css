@@ -53,8 +53,8 @@
 }
 .dropdown-toggle::after{
   position: relative;
-  left: 40%;
-  top: 2px;
+  float: right;
+  top: 10px;
 }
 .dropdown-menu{
   width: 240px;

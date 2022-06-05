@@ -1,7 +1,22 @@
+import React, { useState } from "react"
 import './assets/css/App.css'
 import Header from './components/Header'
 
+const initialData = {
+  frameWork: ''
+}
+
 function App() {
+  const [frameWorkValue, setFrameWork] = useState(initialData)
+
+  let handleFrameWork = e => {
+    setFrameWork({
+      ...frameWorkValue,
+      frameWork: e
+    })
+  }
+
+
   let html = (
     <div className='Front-End-Test---Home-view'>
 
@@ -19,23 +34,23 @@ function App() {
 
       <div className="dropDownContainer">
         <div className="dropdownB">
-          <button className="btn btn-secondary dropdown-toggle dropDown" type="button" id="dropdownMenuClickableInside" data-bs-toggle="dropdown" data-bs-auto-close="outside" aria-expanded="false">
-            Select your news
+          <button className="btn btn-secondary dropdown-toggle dropDown" type="button" id="dropdownMenuClickableInside" data-bs-toggle="dropdown" aria-expanded="false">
+            {(frameWorkValue.frameWork === '' ? 'Select your news': frameWorkValue.frameWork)}
           </button>
           <ul className="dropdown-menu" aria-labelledby="dropdownMenuClickableInside">
-            <li>
+            <li onClick={() => {handleFrameWork('Angular')}}>
               <button className="dropItem dropdown-item" href="hola">
                 <span className='dropImg dropImgAngular'></span>
                  Angular
               </button>
             </li>
-            <li>
+            <li onClick={() => {handleFrameWork('Reacts')}}>
               <button className="dropItem dropdown-item" href="hola">
                 <span className='dropImg dropImgReact'></span>
                 Reacts
               </button>
             </li>
-            <li>
+            <li onClick={() => {handleFrameWork('Vuejs')}}>
               <button className="dropItem dropdown-item" href="hola">
                 <span className='dropImg dropImgvue'></span>
                 Vuejs
