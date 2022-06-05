@@ -84,3 +84,57 @@
   height: 22px;
   margin-right: 10px;
 }
+.contentDynamic{
+  display: flex;
+  flex-wrap: wrap;
+  padding: 44px 150px;
+}
+.itemCard{
+  padding: 0 0 0 26px;
+  opacity: 0.8;
+  border-radius: 6px;
+  border: solid 1px #979797;
+  background-color: #fff;
+  display: flex;
+}
+.itemCard .content{
+  width: 100%;
+}
+.faveBtn{
+  padding: 35px 22px 33px;
+  border-radius: 6px;
+  border: solid 1px #f7f7f7;
+  background-color: #f7f7f7;
+  cursor: pointer;
+}
+.row1{
+  padding-top: 10px;
+  display: flex;
+}
+.row2 p{
+  font-family: 'Roboto', sans-serif;
+  font-size: 14px;
+  font-weight: 500;
+  font-stretch: normal;
+  font-style: normal;
+  line-height: 1.43;
+  letter-spacing: 0.25px;
+  color: #6b6b6b;
+}
+.clockIcon{
+  width: 16px;
+  height: 16px;
+  object-fit: contain;
+}
+.textTime{
+  margin-left: 5px;
+  margin-top: 2px;
+  font-family: 'Roboto', sans-serif;
+  font-size: 11px;
+  font-weight: normal;
+  font-stretch: normal;
+  font-style: normal;
+  line-height: normal;
+  letter-spacing: normal;
+  color: #767676;
+}
