@@ -14,21 +14,25 @@ const initialData = {
 function App() {
   const [frameWorkValue, setFrameWork] = useState(initialData)
   const [infoFrameworkApi, setFrameworkList] = useState(initialData)
-  let api = 'https://hn.algolia.com/api/v1/search_by_date?query=angular&page=0'
+  
   const monthNames = ["January", "February", "March", "April", "May", "June",
     "July", "August", "September", "October", "November", "December"
   ];
 
   useEffect(() => {
+    executeQuery('')
+    // eslint-disable-next-line
+  },[])
+
+  let executeQuery = e => {
+    let api = 'https://hn.algolia.com/api/v1/search_by_date?query='+e+'&page=0'
     fetch(api, {method: "GET"})
     .then(data  => data.json())
     .then(json => {
       getFrameworkList(json)
       console.log(json)
     })
-
-    // eslint-disable-next-line
-  },[])
+  }
 
   let getFrameworkList = data => {
     setFrameworkList({
@@ -38,13 +42,11 @@ function App() {
     })
   }
 
-
-
   let handleFrameWork = e => {
     setFrameWork({
       ...frameWorkValue,
       frameWork: e
-    })
+    }, executeQuery(e))
   }
 
 
@@ -69,19 +71,19 @@ function App() {
             {(frameWorkValue.frameWork === '' ? 'Select your news': frameWorkValue.frameWork)}
           </button>
           <ul className="dropdown-menu" aria-labelledby="dropdownMenuClickableInside">
-            <li onClick={() => {handleFrameWork('Angular')}}>
+            <li onClick={() => {handleFrameWork('angular')}}>
               <button className="dropItem dropdown-item" href="hola">
                 <span className='dropImg dropImgAngular'></span>
                  Angular
               </button>
             </li>
-            <li onClick={() => {handleFrameWork('Reacts')}}>
+            <li onClick={() => {handleFrameWork('reactjs')}}>
               <button className="dropItem dropdown-item" href="hola">
                 <span className='dropImg dropImgReact'></span>
-                Reacts
+                Reactjs
               </button>
             </li>
-            <li onClick={() => {handleFrameWork('Vuejs')}}>
+            <li onClick={() => {handleFrameWork('vuejs')}}>
               <button className="dropItem dropdown-item" href="hola">
                 <span className='dropImg dropImgvue'></span>
                 Vuejs

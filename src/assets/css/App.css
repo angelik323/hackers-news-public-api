@@ -50,6 +50,7 @@
   background-color: #fff;
   color: #2e2e2e;
   text-align: left;
+  text-transform: capitalize;
 }
 .dropdown-toggle::after{
   position: relative;
