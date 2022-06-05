@@ -1,23 +1,21 @@
-import logo from './assets/img/logo.svg'
 import './assets/css/App.css'
+import Header from './components/Header'
 
 function App() {
   let html = (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> Para Angelita.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div className='Front-End-Test---Home-view'>
+      <Header></Header>
+      <div className="Rectangle">
+        <span className="All">
+          All
+        </span>
+      </div>
+
+      <div class="Rectangle2">
+        <span class="My-faves">
+          My faves
+        </span>
+      </div>
     </div>
   )
 
