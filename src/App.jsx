@@ -2,6 +2,9 @@ import React, { useState } from "react"
 import './assets/css/App.css'
 import Header from './components/Header'
 
+import Clock from './assets/img/clock.svg'
+import HeartFull from './assets/img/heartFull.svg'
+
 const initialData = {
   frameWork: ''
 }
@@ -58,6 +61,27 @@ function App() {
             </li>
           </ul>
         </div>
+      </div>
+
+      <div className="contentDynamic">
+
+        <div className="col col-6 p-3">
+          <div className="itemCard">
+            <div className="content">
+              <div className="row1">
+                <img src={Clock} alt={Clock} className="clockIcon" />
+                <p className="textTime">3 hours ago by author</p>
+              </div>
+              <div className="row2">
+                <p>Yes, React is taking over front-end development. The question is why.</p>
+              </div>
+            </div>
+            <div className="faveBtn">
+              <img src={HeartFull} alt={HeartFull} />
+            </div>
+          </div>
+        </div>
+
       </div>
 
     </div>
