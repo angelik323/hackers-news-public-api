@@ -1,4 +1,4 @@
-import React, { useState } from "react"
+import React, { useEffect, useState } from "react"
 import './assets/css/App.css'
 import Header from './components/Header'
 
@@ -6,11 +6,39 @@ import Clock from './assets/img/clock.svg'
 import HeartFull from './assets/img/heartFull.svg'
 
 const initialData = {
+  infoFramework: [],
+  listFrameworkHits: [],
   frameWork: ''
 }
 
 function App() {
   const [frameWorkValue, setFrameWork] = useState(initialData)
+  const [infoFrameworkApi, setFrameworkList] = useState(initialData)
+  let api = 'https://hn.algolia.com/api/v1/search_by_date?query=angular&page=0'
+  const monthNames = ["January", "February", "March", "April", "May", "June",
+    "July", "August", "September", "October", "November", "December"
+  ];
+
+  useEffect(() => {
+    fetch(api, {method: "GET"})
+    .then(data  => data.json())
+    .then(json => {
+      getFrameworkList(json)
+      console.log(json)
+    })
+
+    // eslint-disable-next-line
+  },[])
+
+  let getFrameworkList = data => {
+    setFrameworkList({
+      ...infoFrameworkApi,
+      infoFramework: data,
+      listFrameworkHits: data.hits
+    })
+  }
+
+
 
   let handleFrameWork = e => {
     setFrameWork({
@@ -65,22 +93,36 @@ function App() {
 
       <div className="contentDynamic">
 
-        <div className="col col-6 p-3">
-          <div className="itemCard">
-            <div className="content">
-              <div className="row1">
-                <img src={Clock} alt={Clock} className="clockIcon" />
-                <p className="textTime">3 hours ago by author</p>
+        {
+          infoFrameworkApi.listFrameworkHits.map((itemFramework, index) => {
+            let createAt = new Date(itemFramework.created_at)
+            let day = createAt.getUTCDate()
+            let month =  monthNames[createAt.getUTCMonth()]
+            let year = createAt.getUTCFullYear()
+            let date = day + "th " + month + ", " + year
+
+            return(
+              <div key={index} className="col col-6 p-3">
+                <div className="itemCard">
+                  <a href={itemFramework.story_url} target="blank" className="content">
+                    <div className="row1">
+                      <img src={Clock} alt={Clock} className="clockIcon" />
+                      <p className="textTime">{date} by {itemFramework.author}</p>
+                    </div>
+                    <div className="row2">
+                      <p>{itemFramework.story_title}</p>
+                    </div>
+                  </a>
+                  <div className="faveBtn">
+                    <img src={HeartFull} alt={HeartFull} />
+                  </div>
+                </div>
               </div>
-              <div className="row2">
-                <p>Yes, React is taking over front-end development. The question is why.</p>
-              </div>
-            </div>
-            <div className="faveBtn">
-              <img src={HeartFull} alt={HeartFull} />
-            </div>
-          </div>
-        </div>
+            )
+          })
+        }
+
+        
 
       </div>
 

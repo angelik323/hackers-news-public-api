@@ -99,6 +99,7 @@
 }
 .itemCard .content{
   width: 100%;
+  text-decoration: none;
 }
 .faveBtn{
   padding: 35px 22px 33px;
