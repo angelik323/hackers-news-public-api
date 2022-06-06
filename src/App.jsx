@@ -8,13 +8,15 @@ import HeartFull from './assets/img/heartFull.svg'
 const initialData = {
   infoFramework: [],
   listFrameworkHits: [],
-  frameWork: ''
+  frameWork: '',
+  page: 0
 }
 
 function App() {
   const [frameWorkValue, setFrameWork] = useState(initialData)
   const [infoFrameworkApi, setFrameworkList] = useState(initialData)
-  
+  const [infoPage, setInfoPage] = useState(initialData)
+
   const monthNames = [
     "January", "February", "March",
     "April", "May", "June",
@@ -23,12 +25,12 @@ function App() {
   ]
 
   useEffect(() => {
-    executeQuery('')
+    executeQuery('', 0)
     // eslint-disable-next-line
   },[])
 
-  let executeQuery = e => {
-    let api = 'https://hn.algolia.com/api/v1/search_by_date?query='+e+'&page=0'
+  let executeQuery = (query, page = 0) => {
+    let api = 'https://hn.algolia.com/api/v1/search_by_date?query='+query+'&page='+page
     fetch(api, {method: "GET"})
     .then(data  => data.json())
     .then(json => {
@@ -50,9 +52,15 @@ function App() {
     setFrameWork({
       ...frameWorkValue,
       frameWork: e
-    }, executeQuery(e))
+    }, executeQuery(e, 0))
   }
 
+  let handlePage = e => {
+    setInfoPage({
+      ...infoPage,
+      page: e
+    }, executeQuery(frameWorkValue.frameWork, e))
+  }
 
   let html = (
     <div className='Front-End-Test---Home-view'>
@@ -146,17 +154,17 @@ function App() {
       <div className="pagination">
         <div className="container">
           <div className="rowsPagination">
-            <div className="btnPageItem"><span>&lt;</span></div>
-            <div className="btnPageItem btnPageActive"><span>1</span></div>
-            <div className="btnPageItem"><span>2</span></div>
-            <div className="btnPageItem"><span>3</span></div>
-            <div className="btnPageItem"><span>4</span></div>
-            <div className="btnPageItem"><span>5</span></div>
-            <div className="btnPageItem"><span>6</span></div>
-            <div className="btnPageItem"><span>7</span></div>
-            <div className="btnPageItem"><span>8</span></div>
-            <div className="btnPageItem"><span>9</span></div>
-            <div className="btnPageItem"><span>&gt;</span></div>
+            <div className="btnPageItem" onClick={() => { (infoPage.page === 0 ? handlePage(0) : handlePage(infoPage.page - 1)) }}><span>&lt;</span></div>
+            <div className={"btnPageItem " + (infoPage.page === 0 ? 'btnPageActive' : '')} onClick={() => {handlePage(0)}}><span>1</span></div>
+            <div className={"btnPageItem " + (infoPage.page === 1 ? 'btnPageActive' : '')} onClick={() => {handlePage(1)}}><span>2</span></div>
+            <div className={"btnPageItem " + (infoPage.page === 2 ? 'btnPageActive' : '')} onClick={() => {handlePage(2)}}><span>3</span></div>
+            <div className={"btnPageItem " + (infoPage.page === 3 ? 'btnPageActive' : '')} onClick={() => {handlePage(3)}}><span>4</span></div>
+            <div className={"btnPageItem " + (infoPage.page === 4 ? 'btnPageActive' : '')} onClick={() => {handlePage(4)}}><span>5</span></div>
+            <div className={"btnPageItem " + (infoPage.page === 5 ? 'btnPageActive' : '')} onClick={() => {handlePage(5)}}><span>6</span></div>
+            <div className={"btnPageItem " + (infoPage.page === 6 ? 'btnPageActive' : '')} onClick={() => {handlePage(6)}}><span>7</span></div>
+            <div className={"btnPageItem " + (infoPage.page === 7 ? 'btnPageActive' : '')} onClick={() => {handlePage(7)}}><span>8</span></div>
+            <div className={"btnPageItem " + (infoPage.page === 8 ? 'btnPageActive' : '')} onClick={() => {handlePage(8)}}><span>9</span></div>
+            <div className="btnPageItem" onClick={() => { (infoPage.page === 8 ? handlePage(8) : handlePage(infoPage.page + 1)) }}><span>&gt;</span></div>
           </div>
         </div>
       </div>
