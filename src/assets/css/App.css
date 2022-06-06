@@ -4,9 +4,7 @@
   box-sizing: border-box;
   font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
-.maq{
-  border: 1px red solid;
-}
+.maq{border: 1px red solid;}
 .Front-End-Test---Home-view {
   width: 100%;
   min-height: 100vh;
@@ -39,10 +37,7 @@
 }
 .rectangleActive {border: solid 1px #1797ff;}
 .rectangleActive span {color: #1797ff !important;}
-
-.dropDownContainer{
-  padding: 44px 0;
-}
+.dropDownContainer{padding: 44px 0;}
 .dropDown {
   width: 240px;
   border-radius: 4px;
@@ -139,3 +134,33 @@
   letter-spacing: normal;
   color: #767676;
 }
+.rowsPagination{
+  margin-top: 40px;
+  display: flex;
+  justify-content: center;
+}
+.btnPageItem{
+  width: 32px;
+  height: 32px;
+  padding: 2px 12px 4px;
+  margin: 0px 6px;
+  border-radius: 6px;
+  border: solid 1px #d9d9d9;
+  background-color: #fff;
+  cursor: pointer;
+}
+.btnPageItem span{
+  width: 8px;
+  height: 22px;
+  font-family: 'Roboto', sans-serif;
+  font-size: 14px;
+  font-weight: normal;
+  font-stretch: normal;
+  font-style: normal;
+  line-height: 1.57;
+  letter-spacing: normal;
+  text-align: center;
+  color: rgba(0, 0, 0, 0.65);
+}
+.btnPageActive{background-color: #1890ff;}
+.btnPageActive span{color: #fff;}

@@ -33,6 +33,7 @@ function App() {
     .then(data  => data.json())
     .then(json => {
       getFrameworkList(json)
+      console.clear()
       console.log(json)
     })
   }
@@ -138,6 +139,24 @@ function App() {
               })
             }
 
+          </div>
+        </div>
+      </div>
+
+      <div className="pagination">
+        <div className="container">
+          <div className="rowsPagination">
+            <div className="btnPageItem"><span>&lt;</span></div>
+            <div className="btnPageItem btnPageActive"><span>1</span></div>
+            <div className="btnPageItem"><span>2</span></div>
+            <div className="btnPageItem"><span>3</span></div>
+            <div className="btnPageItem"><span>4</span></div>
+            <div className="btnPageItem"><span>5</span></div>
+            <div className="btnPageItem"><span>6</span></div>
+            <div className="btnPageItem"><span>7</span></div>
+            <div className="btnPageItem"><span>8</span></div>
+            <div className="btnPageItem"><span>9</span></div>
+            <div className="btnPageItem"><span>&gt;</span></div>
           </div>
         </div>
       </div>
