@@ -9,16 +9,18 @@ import HeartFull from '../assets/img/heartFull.svg'
 const initialData = {
   infoFramework: [],
   listFrameworkHits: [],
-  frameWork: '',
-  page: 0
+  frameWork: 'angular',
+  page: 0,
+  listFaves: []
 }
 
-function Home() {
+let listaFaves = []
+
+const Home = () => {
   const [frameWorkValue, setFrameWork] = useState(initialData)
   const [infoFrameworkApi, setFrameworkList] = useState(initialData)
   const [infoPage, setInfoPage] = useState(initialData)
-
-  localStorage.myFaves = []
+  const [arrFaves, setArrFaves] = useState(initialData)
 
   const monthNames = [
     "January", "February", "March",
@@ -27,12 +29,13 @@ function Home() {
     "October", "November", "December"
   ]
 
+ 
   useEffect(() => {
-    executeQuery('', 0)
+    executeQuery('angular', 0)
     // eslint-disable-next-line
   },[])
 
-  let executeQuery = (query, page = 0) => {
+  let executeQuery = (query = 'angular', page = 0) => {
     let api = 'https://hn.algolia.com/api/v1/search_by_date?query='+query+'&page='+page
     fetch(api, {method: "GET"})
     .then(data  => data.json())
@@ -64,6 +67,15 @@ function Home() {
       ...infoPage,
       page: e
     }, executeQuery(frameWorkValue.frameWork, e))
+  }
+
+  let addIdLocalStorage = jsonFave => {
+    listaFaves.push(jsonFave)
+    setArrFaves({
+      ...arrFaves,
+      listFaves: listaFaves
+    })
+    localStorage.listFaves_1 = JSON.stringify(arrFaves.listFaves)
   }
 
   let html = (
@@ -127,7 +139,11 @@ function Home() {
                           <p>{itemFramework.story_title}</p>
                         </div>
                       </a>
-                      <div className="faveBtn">
+                      <div className="faveBtn" onClick={() => addIdLocalStorage({
+                          idFave: [frameWorkValue.frameWork, infoPage.page, itemFramework.objectID],
+                          contentFave: [itemFramework.author, itemFramework.story_title, itemFramework.story_url, itemFramework.created_at]
+                        }
+                      )}>
                         <img src={HeartEmpty} alt={HeartEmpty} />
                       </div>
                     </div>

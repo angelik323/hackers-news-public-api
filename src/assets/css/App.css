@@ -35,5 +35,8 @@
   text-align: center;
   color: #606060;
 }
+.rectangles a{
+  text-decoration: none;
+}
 .rectangleActive {border: solid 1px #1797ff;}
 .rectangleActive span {color: #1797ff !important;}

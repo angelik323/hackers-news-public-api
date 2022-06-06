@@ -1,4 +1,5 @@
 import React  from "react"
+
 import './assets/css/App.css'
 import Header from './components/Header'
 
@@ -8,8 +9,9 @@ import { HashRouter as Router,
 } from "react-router-dom"
 
 import Home from './components/Home'
+import MyFaves from "./components/MyFaves"
 
-function App() {
+const App = () => {
   let html = (
     <div className='Front-End-Test---Home-view'>
 
@@ -17,19 +19,24 @@ function App() {
 
       <div className="container">
         <div className="rectangles">
-          <div className="rectangle rectangleActive">
-            <span className="All">All</span>
-          </div>
+          <a href='/'>
+            <div className="rectangle rectangleActive">
+              <span className="All">All</span>
+            </div>
+          </a>
 
-          <div className="rectangle">
-            <span className="My-faves">My faves</span>
-          </div>
+          <a href='/#/myFaves'>
+            <div className="rectangle">
+              <span className="My-faves">My faves</span>
+            </div>
+          </a>
         </div>
       </div>
 
       <Router>
         <Routes>
           <Route path="/" element={<Home></Home>}></Route>
+          <Route path="/myFaves" element={<MyFaves></MyFaves>}></Route>
         </Routes>
       </Router>
 
