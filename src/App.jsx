@@ -15,9 +15,12 @@ function App() {
   const [frameWorkValue, setFrameWork] = useState(initialData)
   const [infoFrameworkApi, setFrameworkList] = useState(initialData)
   
-  const monthNames = ["January", "February", "March", "April", "May", "June",
-    "July", "August", "September", "October", "November", "December"
-  ];
+  const monthNames = [
+    "January", "February", "March",
+    "April", "May", "June",
+    "July", "August", "September",
+    "October", "November", "December"
+  ]
 
   useEffect(() => {
     executeQuery('')
@@ -55,77 +58,88 @@ function App() {
 
       <Header></Header>
 
-      <div className="rectangles">
-        <div className="rectangle rectangleActive">
-          <span className="All">All</span>
-        </div>
+      <div className="container">
+        <div className="rectangles">
+          <div className="rectangle rectangleActive">
+            <span className="All">All</span>
+          </div>
 
-        <div className="rectangle">
-          <span className="My-faves">My faves</span>
+          <div className="rectangle">
+            <span className="My-faves">My faves</span>
+          </div>
         </div>
       </div>
 
       <div className="dropDownContainer">
-        <div className="dropdownB">
-          <button className="btn btn-secondary dropdown-toggle dropDown" type="button" id="dropdownMenuClickableInside" data-bs-toggle="dropdown" aria-expanded="false">
-            {(frameWorkValue.frameWork === '' ? 'Select your news': frameWorkValue.frameWork)}
-          </button>
-          <ul className="dropdown-menu" aria-labelledby="dropdownMenuClickableInside">
-            <li onClick={() => {handleFrameWork('angular')}}>
-              <button className="dropItem dropdown-item" href="hola">
-                <span className='dropImg dropImgAngular'></span>
-                 Angular
-              </button>
-            </li>
-            <li onClick={() => {handleFrameWork('reactjs')}}>
-              <button className="dropItem dropdown-item" href="hola">
-                <span className='dropImg dropImgReact'></span>
-                Reactjs
-              </button>
-            </li>
-            <li onClick={() => {handleFrameWork('vuejs')}}>
-              <button className="dropItem dropdown-item" href="hola">
-                <span className='dropImg dropImgvue'></span>
-                Vuejs
-              </button>
-            </li>
-          </ul>
+        <div className="container">
+          <div className="dropdownB">
+
+            <button className="btn btn-secondary dropdown-toggle dropDown" type="button" id="dropdownMenuClickableInside" data-bs-toggle="dropdown" aria-expanded="false">
+              {(frameWorkValue.frameWork === '' ? 'Select your news': frameWorkValue.frameWork)}
+            </button>
+
+            <ul className="dropdown-menu" aria-labelledby="dropdownMenuClickableInside">
+              <li onClick={() => {handleFrameWork('angular')}}>
+                <button className="dropItem dropdown-item" href="hola">
+                  <span className='dropImg dropImgAngular'></span>
+                  Angular
+                </button>
+              </li>
+
+              <li onClick={() => {handleFrameWork('reactjs')}}>
+                <button className="dropItem dropdown-item" href="hola">
+                  <span className='dropImg dropImgReact'></span>
+                  Reactjs
+                </button>
+              </li>
+
+              <li onClick={() => {handleFrameWork('vuejs')}}>
+                <button className="dropItem dropdown-item" href="hola">
+                  <span className='dropImg dropImgvue'></span>
+                  Vuejs
+                </button>
+              </li>
+            </ul>
+
+          </div>
         </div>
       </div>
 
       <div className="contentDynamic">
+        <div className="container">
+          <div className="row">
 
-        {
-          infoFrameworkApi.listFrameworkHits.map((itemFramework, index) => {
-            let createAt = new Date(itemFramework.created_at)
-            let day = createAt.getUTCDate()
-            let month =  monthNames[createAt.getUTCMonth()]
-            let year = createAt.getUTCFullYear()
-            let date = day + "th " + month + ", " + year
+            {
+              infoFrameworkApi.listFrameworkHits.map((itemFramework, index) => {
+                let createAt = new Date(itemFramework.created_at)
+                let day = createAt.getUTCDate()
+                let month =  monthNames[createAt.getUTCMonth()]
+                let year = createAt.getUTCFullYear()
+                let date = day + "th " + month + ", " + year
 
-            return(
-              <div key={index} className="col col-6 p-3">
-                <div className="itemCard">
-                  <a href={itemFramework.story_url} target="blank" className="content">
-                    <div className="row1">
-                      <img src={Clock} alt={Clock} className="clockIcon" />
-                      <p className="textTime">{date} by {itemFramework.author}</p>
+                return(
+                  <div key={index} className="col col-12 col-md-6 p-3">
+                    <div className="itemCard">
+                      <a href={itemFramework.story_url} target="blank" className="content">
+                        <div className="row1">
+                          <img src={Clock} alt={Clock} className="clockIcon" />
+                          <p className="textTime">{date} by {itemFramework.author}</p>
+                        </div>
+                        <div className="row2">
+                          <p>{itemFramework.story_title}</p>
+                        </div>
+                      </a>
+                      <div className="faveBtn">
+                        <img src={HeartFull} alt={HeartFull} />
+                      </div>
                     </div>
-                    <div className="row2">
-                      <p>{itemFramework.story_title}</p>
-                    </div>
-                  </a>
-                  <div className="faveBtn">
-                    <img src={HeartFull} alt={HeartFull} />
                   </div>
-                </div>
-              </div>
-            )
-          })
-        }
+                )
+              })
+            }
 
-        
-
+          </div>
+        </div>
       </div>
 
     </div>

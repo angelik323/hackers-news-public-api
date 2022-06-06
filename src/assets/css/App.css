@@ -41,7 +41,7 @@
 .rectangleActive span {color: #1797ff !important;}
 
 .dropDownContainer{
-  padding: 44px 150px;
+  padding: 44px 0;
 }
 .dropDown {
   width: 240px;
@@ -88,7 +88,6 @@
 .contentDynamic{
   display: flex;
   flex-wrap: wrap;
-  padding: 44px 150px;
 }
 .itemCard{
   padding: 0 0 0 26px;

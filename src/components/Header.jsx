@@ -4,9 +4,11 @@ const Header = () => {
   let html= (
     <>
       <div className='header'>
-        <span className="HACKER-NEWS">
-          HACKER NEWS
-        </span>
+        <div className="container">
+          <span className="HACKER-NEWS">
+            HACKER NEWS
+          </span>
+        </div>
       </div>
     </>
   )
