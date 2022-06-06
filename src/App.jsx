@@ -17,22 +17,6 @@ const App = () => {
 
       <Header></Header>
 
-      <div className="container">
-        <div className="rectangles">
-          <a href='/'>
-            <div className="rectangle rectangleActive">
-              <span className="All">All</span>
-            </div>
-          </a>
-
-          <a href='/#/myFaves'>
-            <div className="rectangle">
-              <span className="My-faves">My faves</span>
-            </div>
-          </a>
-        </div>
-      </div>
-
       <Router>
         <Routes>
           <Route path="/" element={<Home></Home>}></Route>

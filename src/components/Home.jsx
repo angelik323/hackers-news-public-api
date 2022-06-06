@@ -71,15 +71,32 @@ const Home = () => {
 
   let addIdLocalStorage = jsonFave => {
     listaFaves.push(jsonFave)
+    
     setArrFaves({
       ...arrFaves,
       listFaves: listaFaves
-    })
-    localStorage.listFaves_1 = JSON.stringify(arrFaves.listFaves)
+    }, localStorage.listFaves_1 = JSON.stringify(arrFaves.listFaves))
+    
   }
 
   let html = (
     <>
+      <div className="container">
+        <div className="rectangles">
+          <a href='/'>
+            <div className="rectangle rectangleActive">
+              <span className="All">All</span>
+            </div>
+          </a>
+
+          <a href='/#/myFaves'>
+            <div className="rectangle">
+              <span className="My-faves">My faves</span>
+            </div>
+          </a>
+        </div>
+      </div>
+
       <div className="dropDownContainer">
         <div className="container">
           <div className="dropdownB">
