@@ -30,7 +30,7 @@ const MyFaves = () => {
   },[])
 
   let executeQueryLocal = () => {
-    let jsonParse = JSON.parse(localStorage.listFaves_1)
+    let jsonParse = JSON.parse((localStorage.listFaves_1 === undefined ? '{}' : localStorage.listFaves_1))
     console.log(jsonParse)
     getFrameworkList(jsonParse)
   }
@@ -52,6 +52,22 @@ const MyFaves = () => {
 
   let html = (
     <>
+      <div className="container">
+        <div className="rectangles">
+          <a href='/'>
+            <div className="rectangle">
+              <span className="All">All</span>
+            </div>
+          </a>
+
+          <a href='/#/myFaves'>
+            <div className="rectangle rectangleActive">
+              <span className="My-faves">My faves</span>
+            </div>
+          </a>
+        </div>
+      </div>
+
       <div className="dropDownContainer">
         <div className="container">
           <div className="dropdownB">
@@ -92,6 +108,7 @@ const MyFaves = () => {
           <div className="row">
 
             {
+              localStorage.listFaves_1 !== undefined ?
               infoFrameworkApi.infoFramework.map((itemFramework, index) => {
                 let createAt = new Date(itemFramework.contentFave[3])
                 let day = createAt.getUTCDate()
@@ -102,13 +119,13 @@ const MyFaves = () => {
                 return (
                   <div key={index} className="col col-12 col-md-6 p-3">
                     <div className="itemCard">
-                      <a href={itemFramework.contentFave[0]} target="blank" className="content">
+                      <a href={itemFramework.contentFave[2]} target="blank" className="content">
                         <div className="row1">
                           <img src={Clock} alt={Clock} className="clockIcon" />
-                          <p className="textTime">{date} by {itemFramework.contentFave[1]}</p>
+                          <p className="textTime">{date} by {itemFramework.contentFave[0]}</p>
                         </div>
                         <div className="row2">
-                          <p>{itemFramework.contentFave[2]}</p>
+                          <p>{itemFramework.contentFave[1]}</p>
                         </div>
                       </a>
                       <div className="faveBtn">
@@ -117,7 +134,10 @@ const MyFaves = () => {
                     </div>
                   </div>
                 )
-              })
+              }) :
+              <div className='w-100 ph-100 py-5'>
+                <h3 className='center my-5'>No hay información disponible</h3>
+              </div>
             }
 
           </div>
